@@ -12,6 +12,13 @@ const agenda = new Agenda({
 });
 
 reportJob(agenda);
-agenda.start();
+
+(async function () {
+	// IIFE to give access to async/await
+	await agenda.start();
+
+	await agenda.every('1 minute', 'user-count');
+
+})();
 
 module.exports = agenda;

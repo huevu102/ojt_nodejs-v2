@@ -1,13 +1,13 @@
-[2023-04-13T14:42:00.316] [INFO] report - <ref *1> Job {
+[2023-04-13T15:22:22.157] [INFO] report - <ref *1> Job {
   agenda: Agenda {
     _events: [Object: null prototype] { ready: [Function (anonymous)] },
     _eventsCount: 1,
     _maxListeners: undefined,
     _findAndLockNextJob: [Function: findAndLockNextJob],
     _name: undefined,
-    _processEvery: 5000,
+    _processEvery: 30000,
     _defaultConcurrency: 5,
-    _maxConcurrency: 20,
+    _maxConcurrency: 1,
     _defaultLockLimit: 0,
     _lockLimit: 0,
     _definitions: { 'user-count': [Object] },
@@ -18,7 +18,7 @@
     _sort: { nextRunAt: 1, priority: -1 },
     _indices: { name: 1, nextRunAt: 1, priority: -1, lockedAt: 1, disabled: 1 },
     _disableAutoIndex: false,
-    _isLockingOnTheFly: false,
+    _isLockingOnTheFly: true,
     _isJobQueueFilling: Map(0) {},
     _jobsToLock: [],
     _ready: Promise { undefined },
@@ -35,44 +35,43 @@
     _mdb: Db { s: [Object] },
     _collection: Collection { s: [Object] },
     _processInterval: Timeout {
-      _idleTimeout: 5000,
+      _idleTimeout: 30000,
       _idlePrev: [TimersList],
-      _idleNext: [Timeout],
-      _idleStart: 66098,
+      _idleNext: [TimersList],
+      _idleStart: 2223,
       _onTimeout: [Function: bound processJobs],
       _timerArgs: undefined,
-      _repeat: 5000,
+      _repeat: 30000,
       _destroyed: false,
       [Symbol(refed)]: true,
       [Symbol(kHasPrimitive)]: false,
       [Symbol(asyncId)]: 115,
       [Symbol(triggerId)]: 0
     },
-    _nextScanAt: 2023-04-13T07:42:05.291Z,
+    _nextScanAt: 2023-04-13T08:22:52.142Z,
     [Symbol(kCapture)]: false
   },
   attrs: {
-    _id: new ObjectId("6437a3be10a2f59568886a62"),
+    _id: new ObjectId("6437bba7963832b0b9541c2d"),
     name: 'user-count',
-    data: { name: 'Your medatada goes here...' },
+    data: {},
+    endDate: null,
+    lastModifiedBy: null,
     priority: 0,
-    shouldSaveResult: false,
     repeatInterval: '1 minute',
     repeatTimezone: null,
-    startDate: null,
-    endDate: null,
+    shouldSaveResult: false,
     skipDays: null,
-    lastModifiedBy: null,
-    lockedAt: 2023-04-13T07:42:00.284Z,
-    lastRunAt: 2023-04-13T07:42:00.306Z,
-    lastFinishedAt: 2023-04-13T07:30:57.986Z,
-    type: 'normal',
-    nextRunAt: 2023-04-13T07:43:00.306Z
+    startDate: null,
+    lockedAt: 2023-04-13T08:22:22.132Z,
+    type: 'single',
+    nextRunAt: 2023-04-13T08:23:22.153Z,
+    lastRunAt: 2023-04-13T08:22:22.153Z
   }
 }
-[2023-04-13T14:42:00.319] [INFO] report - Job user-count start.
-[2023-04-13T14:42:00.382] [INFO] report - Successfully created report.
-[2023-04-13T14:43:00.319] [INFO] report - <ref *1> Job {
+[2023-04-13T15:22:22.165] [INFO] report - Job user-count start.
+[2023-04-13T15:22:22.333] [INFO] report - Successfully created report.
+[2023-04-13T15:23:22.161] [INFO] report - <ref *1> Job {
   agenda: Agenda {
     _events: [Object: null prototype] { ready: [Function (anonymous)] },
     _eventsCount: 1,
@@ -112,41 +111,41 @@
       _idleTimeout: 5000,
       _idlePrev: [TimersList],
       _idleNext: [TimersList],
-      _idleStart: 31506,
+      _idleStart: 37980,
       _onTimeout: [Function: bound processJobs],
       _timerArgs: undefined,
       _repeat: 5000,
       _destroyed: false,
       [Symbol(refed)]: true,
       [Symbol(kHasPrimitive)]: false,
-      [Symbol(asyncId)]: 115,
+      [Symbol(asyncId)]: 111,
       [Symbol(triggerId)]: 0
     },
-    _nextScanAt: 2023-04-13T07:43:04.807Z,
+    _nextScanAt: 2023-04-13T08:23:24.497Z,
     [Symbol(kCapture)]: false
   },
   attrs: {
-    _id: new ObjectId("6437a3be10a2f59568886a62"),
+    _id: new ObjectId("6437bba7963832b0b9541c2d"),
     name: 'user-count',
-    data: { name: 'Your medatada goes here...' },
+    data: {},
+    endDate: null,
+    lastModifiedBy: null,
     priority: 0,
-    shouldSaveResult: false,
     repeatInterval: '1 minute',
     repeatTimezone: null,
-    startDate: null,
-    endDate: null,
+    shouldSaveResult: false,
     skipDays: null,
-    lastModifiedBy: null,
-    lockedAt: 2023-04-13T07:42:59.802Z,
-    lastRunAt: 2023-04-13T07:43:00.309Z,
-    lastFinishedAt: 2023-04-13T07:42:00.383Z,
-    type: 'normal',
-    nextRunAt: 2023-04-13T07:44:00.309Z
+    startDate: null,
+    lockedAt: 2023-04-13T08:23:19.493Z,
+    lastRunAt: 2023-04-13T08:23:22.155Z,
+    lastFinishedAt: 2023-04-13T08:22:22.333Z,
+    type: 'single',
+    nextRunAt: 2023-04-13T08:24:22.155Z
   }
 }
-[2023-04-13T14:43:00.324] [INFO] report - Job user-count start.
-[2023-04-13T14:43:00.389] [INFO] report - Successfully created report.
-[2023-04-13T14:44:00.314] [INFO] report - <ref *1> Job {
+[2023-04-13T15:23:22.166] [INFO] report - Job user-count start.
+[2023-04-13T15:23:22.204] [INFO] report - Successfully created report.
+[2023-04-13T15:24:22.160] [INFO] report - <ref *1> Job {
   agenda: Agenda {
     _events: [Object: null prototype] { ready: [Function (anonymous)] },
     _eventsCount: 1,
@@ -186,41 +185,41 @@
       _idleTimeout: 5000,
       _idlePrev: [TimersList],
       _idleNext: [TimersList],
-      _idleStart: 91515,
+      _idleStart: 97990,
       _onTimeout: [Function: bound processJobs],
       _timerArgs: undefined,
       _repeat: 5000,
       _destroyed: false,
       [Symbol(refed)]: true,
       [Symbol(kHasPrimitive)]: false,
-      [Symbol(asyncId)]: 115,
+      [Symbol(asyncId)]: 111,
       [Symbol(triggerId)]: 0
     },
-    _nextScanAt: 2023-04-13T07:44:04.817Z,
+    _nextScanAt: 2023-04-13T08:24:24.509Z,
     [Symbol(kCapture)]: false
   },
   attrs: {
-    _id: new ObjectId("6437a3be10a2f59568886a62"),
+    _id: new ObjectId("6437bba7963832b0b9541c2d"),
     name: 'user-count',
-    data: { name: 'Your medatada goes here...' },
+    data: {},
+    endDate: null,
+    lastModifiedBy: null,
     priority: 0,
-    shouldSaveResult: false,
     repeatInterval: '1 minute',
     repeatTimezone: null,
-    startDate: null,
-    endDate: null,
+    shouldSaveResult: false,
     skipDays: null,
-    lastModifiedBy: null,
-    lockedAt: 2023-04-13T07:43:59.814Z,
-    lastRunAt: 2023-04-13T07:44:00.310Z,
-    lastFinishedAt: 2023-04-13T07:43:00.389Z,
-    type: 'normal',
-    nextRunAt: 2023-04-13T07:45:00.310Z
+    startDate: null,
+    lockedAt: 2023-04-13T08:24:19.505Z,
+    lastRunAt: 2023-04-13T08:24:22.157Z,
+    lastFinishedAt: 2023-04-13T08:23:22.204Z,
+    type: 'single',
+    nextRunAt: 2023-04-13T08:25:22.157Z
   }
 }
-[2023-04-13T14:44:00.316] [INFO] report - Job user-count start.
-[2023-04-13T14:44:00.337] [INFO] report - Successfully created report.
-[2023-04-13T14:45:00.315] [INFO] report - <ref *1> Job {
+[2023-04-13T15:24:22.162] [INFO] report - Job user-count start.
+[2023-04-13T15:24:22.187] [INFO] report - Successfully created report.
+[2023-04-13T15:25:22.162] [INFO] report - <ref *1> Job {
   agenda: Agenda {
     _events: [Object: null prototype] { ready: [Function (anonymous)] },
     _eventsCount: 1,
@@ -260,7 +259,229 @@
       _idleTimeout: 5000,
       _idlePrev: [TimersList],
       _idleNext: [TimersList],
-      _idleStart: 151532,
+      _idleStart: 158011,
+      _onTimeout: [Function: bound processJobs],
+      _timerArgs: undefined,
+      _repeat: 5000,
+      _destroyed: false,
+      [Symbol(refed)]: true,
+      [Symbol(kHasPrimitive)]: false,
+      [Symbol(asyncId)]: 111,
+      [Symbol(triggerId)]: 0
+    },
+    _nextScanAt: 2023-04-13T08:25:24.531Z,
+    [Symbol(kCapture)]: false
+  },
+  attrs: {
+    _id: new ObjectId("6437bba7963832b0b9541c2d"),
+    name: 'user-count',
+    data: {},
+    endDate: null,
+    lastModifiedBy: null,
+    priority: 0,
+    repeatInterval: '1 minute',
+    repeatTimezone: null,
+    shouldSaveResult: false,
+    skipDays: null,
+    startDate: null,
+    lockedAt: 2023-04-13T08:25:19.528Z,
+    lastRunAt: 2023-04-13T08:25:22.158Z,
+    lastFinishedAt: 2023-04-13T08:24:22.187Z,
+    type: 'single',
+    nextRunAt: 2023-04-13T08:26:22.158Z
+  }
+}
+[2023-04-13T15:25:22.163] [INFO] report - Job user-count start.
+[2023-04-13T15:25:22.190] [INFO] report - Successfully created report.
+[2023-04-13T15:26:22.163] [INFO] report - <ref *1> Job {
+  agenda: Agenda {
+    _events: [Object: null prototype] { ready: [Function (anonymous)] },
+    _eventsCount: 1,
+    _maxListeners: undefined,
+    _findAndLockNextJob: [Function: findAndLockNextJob],
+    _name: undefined,
+    _processEvery: 5000,
+    _defaultConcurrency: 5,
+    _maxConcurrency: 20,
+    _defaultLockLimit: 0,
+    _lockLimit: 0,
+    _definitions: { 'user-count': [Object] },
+    _runningJobs: [ [Circular *1] ],
+    _lockedJobs: [ [Circular *1] ],
+    _jobQueue: JobProcessingQueue { _queue: [] },
+    _defaultLockLifetime: 600000,
+    _sort: { nextRunAt: 1, priority: -1 },
+    _indices: { name: 1, nextRunAt: 1, priority: -1, lockedAt: 1, disabled: 1 },
+    _disableAutoIndex: false,
+    _isLockingOnTheFly: false,
+    _isJobQueueFilling: Map(0) {},
+    _jobsToLock: [],
+    _ready: Promise { undefined },
+    _db: MongoClient {
+      _events: [Object: null prototype] {},
+      _eventsCount: 0,
+      _maxListeners: undefined,
+      mongoLogger: [MongoLogger],
+      s: [Object],
+      topology: [Topology],
+      [Symbol(kCapture)]: false,
+      [Symbol(options)]: [Object: null prototype]
+    },
+    _mdb: Db { s: [Object] },
+    _collection: Collection { s: [Object] },
+    _processInterval: Timeout {
+      _idleTimeout: 5000,
+      _idlePrev: [TimersList],
+      _idleNext: [TimersList],
+      _idleStart: 218027,
+      _onTimeout: [Function: bound processJobs],
+      _timerArgs: undefined,
+      _repeat: 5000,
+      _destroyed: false,
+      [Symbol(refed)]: true,
+      [Symbol(kHasPrimitive)]: false,
+      [Symbol(asyncId)]: 111,
+      [Symbol(triggerId)]: 0
+    },
+    _nextScanAt: 2023-04-13T08:26:24.549Z,
+    [Symbol(kCapture)]: false
+  },
+  attrs: {
+    _id: new ObjectId("6437bba7963832b0b9541c2d"),
+    name: 'user-count',
+    data: {},
+    endDate: null,
+    lastModifiedBy: null,
+    priority: 0,
+    repeatInterval: '1 minute',
+    repeatTimezone: null,
+    shouldSaveResult: false,
+    skipDays: null,
+    startDate: null,
+    lockedAt: 2023-04-13T08:26:19.546Z,
+    lastRunAt: 2023-04-13T08:26:22.159Z,
+    lastFinishedAt: 2023-04-13T08:25:22.190Z,
+    type: 'single',
+    nextRunAt: 2023-04-13T08:27:22.159Z
+  }
+}
+[2023-04-13T15:26:22.164] [INFO] report - Job user-count start.
+[2023-04-13T15:26:22.207] [INFO] report - Successfully created report.
+[2023-04-13T15:27:22.164] [INFO] report - <ref *1> Job {
+  agenda: Agenda {
+    _events: [Object: null prototype] { ready: [Function (anonymous)] },
+    _eventsCount: 1,
+    _maxListeners: undefined,
+    _findAndLockNextJob: [Function: findAndLockNextJob],
+    _name: undefined,
+    _processEvery: 5000,
+    _defaultConcurrency: 5,
+    _maxConcurrency: 20,
+    _defaultLockLimit: 0,
+    _lockLimit: 0,
+    _definitions: { 'user-count': [Object] },
+    _runningJobs: [ [Circular *1] ],
+    _lockedJobs: [ [Circular *1] ],
+    _jobQueue: JobProcessingQueue { _queue: [] },
+    _defaultLockLifetime: 600000,
+    _sort: { nextRunAt: 1, priority: -1 },
+    _indices: { name: 1, nextRunAt: 1, priority: -1, lockedAt: 1, disabled: 1 },
+    _disableAutoIndex: false,
+    _isLockingOnTheFly: false,
+    _isJobQueueFilling: Map(0) {},
+    _jobsToLock: [],
+    _ready: Promise { undefined },
+    _db: MongoClient {
+      _events: [Object: null prototype] {},
+      _eventsCount: 0,
+      _maxListeners: undefined,
+      mongoLogger: [MongoLogger],
+      s: [Object],
+      topology: [Topology],
+      [Symbol(kCapture)]: false,
+      [Symbol(options)]: [Object: null prototype]
+    },
+    _mdb: Db { s: [Object] },
+    _collection: Collection { s: [Object] },
+    _processInterval: Timeout {
+      _idleTimeout: 5000,
+      _idlePrev: [TimersList],
+      _idleNext: [TimersList],
+      _idleStart: 278038,
+      _onTimeout: [Function: bound processJobs],
+      _timerArgs: undefined,
+      _repeat: 5000,
+      _destroyed: false,
+      [Symbol(refed)]: true,
+      [Symbol(kHasPrimitive)]: false,
+      [Symbol(asyncId)]: 111,
+      [Symbol(triggerId)]: 0
+    },
+    _nextScanAt: 2023-04-13T08:27:24.563Z,
+    [Symbol(kCapture)]: false
+  },
+  attrs: {
+    _id: new ObjectId("6437bba7963832b0b9541c2d"),
+    name: 'user-count',
+    data: {},
+    endDate: null,
+    lastModifiedBy: null,
+    priority: 0,
+    repeatInterval: '1 minute',
+    repeatTimezone: null,
+    shouldSaveResult: false,
+    skipDays: null,
+    startDate: null,
+    lockedAt: 2023-04-13T08:27:19.559Z,
+    lastRunAt: 2023-04-13T08:27:22.161Z,
+    lastFinishedAt: 2023-04-13T08:26:22.207Z,
+    type: 'single',
+    nextRunAt: 2023-04-13T08:28:22.161Z
+  }
+}
+[2023-04-13T15:27:22.166] [INFO] report - Job user-count start.
+[2023-04-13T15:27:22.197] [INFO] report - Successfully created report.
+[2023-04-13T15:28:22.170] [INFO] report - <ref *1> Job {
+  agenda: Agenda {
+    _events: [Object: null prototype] { ready: [Function (anonymous)] },
+    _eventsCount: 1,
+    _maxListeners: undefined,
+    _findAndLockNextJob: [Function: findAndLockNextJob],
+    _name: undefined,
+    _processEvery: 5000,
+    _defaultConcurrency: 5,
+    _maxConcurrency: 20,
+    _defaultLockLimit: 0,
+    _lockLimit: 0,
+    _definitions: { 'user-count': [Object] },
+    _runningJobs: [ [Circular *1] ],
+    _lockedJobs: [ [Circular *1] ],
+    _jobQueue: JobProcessingQueue { _queue: [] },
+    _defaultLockLifetime: 600000,
+    _sort: { nextRunAt: 1, priority: -1 },
+    _indices: { name: 1, nextRunAt: 1, priority: -1, lockedAt: 1, disabled: 1 },
+    _disableAutoIndex: false,
+    _isLockingOnTheFly: false,
+    _isJobQueueFilling: Map(0) {},
+    _jobsToLock: [],
+    _ready: Promise { undefined },
+    _db: MongoClient {
+      _events: [Object: null prototype] {},
+      _eventsCount: 0,
+      _maxListeners: undefined,
+      mongoLogger: [MongoLogger],
+      s: [Object],
+      topology: [Topology],
+      [Symbol(kCapture)]: false,
+      [Symbol(options)]: [Object: null prototype]
+    },
+    _mdb: Db { s: [Object] },
+    _collection: Collection { s: [Object] },
+    _processInterval: Timeout {
+      _idleTimeout: 5000,
+      _idlePrev: [TimersList],
+      _idleNext: [TimersList],
+      _idleStart: 28311,
       _onTimeout: [Function: bound processJobs],
       _timerArgs: undefined,
       _repeat: 5000,
@@ -270,27 +491,27 @@
       [Symbol(asyncId)]: 115,
       [Symbol(triggerId)]: 0
     },
-    _nextScanAt: 2023-04-13T07:45:04.834Z,
+    _nextScanAt: 2023-04-13T08:28:26.169Z,
     [Symbol(kCapture)]: false
   },
   attrs: {
-    _id: new ObjectId("6437a3be10a2f59568886a62"),
+    _id: new ObjectId("6437bba7963832b0b9541c2d"),
     name: 'user-count',
-    data: { name: 'Your medatada goes here...' },
+    data: {},
+    endDate: null,
+    lastModifiedBy: null,
     priority: 0,
-    shouldSaveResult: false,
     repeatInterval: '1 minute',
     repeatTimezone: null,
-    startDate: null,
-    endDate: null,
+    shouldSaveResult: false,
     skipDays: null,
-    lastModifiedBy: null,
-    lockedAt: 2023-04-13T07:44:59.832Z,
-    lastRunAt: 2023-04-13T07:45:00.310Z,
-    lastFinishedAt: 2023-04-13T07:44:00.337Z,
-    type: 'normal',
-    nextRunAt: 2023-04-13T07:46:00.310Z
+    startDate: null,
+    lockedAt: 2023-04-13T08:28:21.166Z,
+    lastRunAt: 2023-04-13T08:28:22.163Z,
+    lastFinishedAt: 2023-04-13T08:27:22.197Z,
+    type: 'single',
+    nextRunAt: 2023-04-13T08:29:22.163Z
   }
 }
-[2023-04-13T14:45:00.318] [INFO] report - Job user-count start.
-[2023-04-13T14:45:00.349] [INFO] report - Successfully created report.
+[2023-04-13T15:28:22.179] [INFO] report - Job user-count start.
+[2023-04-13T15:28:22.243] [INFO] report - Successfully created report.
