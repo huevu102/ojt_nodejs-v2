@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head') %>
+
+	<body>
+		<!-- header -->
+		<%- include('../partials/header') %>
+
+			<!-- main -->
+			<main>
+				<div class="container mt-5">
+					<h2 style="text-align: center;" class="mb-5">USERS MANAGEMENT</h2>
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th scope="col">No.</th>
+								<th scope="col">Name</th>
+								<th scope="col">Email</th>
+								<th scope="col">Type</th>
+								<th scope="col">Active</th>
+								<th scope="col">Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% users.forEach((user, index)=> { %>
+								<tr>
+									<th scope="row">
+										<%=index+1%>
+									</th>
+									<td>
+										<%=user.name%>
+									</td>
+									<td>
+										<%=user.email%>
+									</td>
+									<td>
+										<%=user.type%>
+									</td>
+									<td>
+										<%=user.active?true:false%>
+									</td>
+									<td>
+										<a type="button" class="btn btn-secondary" href="/users-mgmt/qrcode/<%=user._id%>" target="_blank" >QR Code</a>
+										<a type="button" class="btn btn-secondary" href="/users-mgmt/update/<%=user._id%>" >Edit</a>
+										<a type="button" class="btn btn-secondary" href="/users-mgmt/delete//<%=user._id%>" onclick="doDeleteUser('<%=user._id%>')">Delete</a>
+									</td>
+								</tr>
+								<% });%>
+						</tbody>
+					</table>
+				</div>
+			</main>
+
+			<!-- footer -->
+			<%- include('../partials/footer'); %>
+
+				<!-- delete user -->
+				<script>
+					const doDeleteUser = (_id) => {
+						fetch(`/users-mgmt/delete/${_id}`, { method: 'POST' }) // function call api, method delete
+						location.reload() // tim cach khac
+					}
+
+					const changeActiveStatus = () => {
+						
+					}
+				</script>
+	</body>
+
+</html>

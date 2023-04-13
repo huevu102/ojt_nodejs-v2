@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head') %>
+
+	<body>
+		<!-- header -->
+		<%- include('../partials/header') %>
+
+		<!-- main -->
+		<main>
+			<div class="container mt-5">
+				<h5>HOME PAGE</h5>
+				<h6>Have a nice day!</h6>
+
+				<h3 class="mt-5">USER COUNT - <span>total user: </span><span class="text-danger font-weight-bold"><%=data.all%></span></h3>
+
+				<ul>
+					<li>
+						<p>New user in day: <span class="text-info font-weight-bold"><%=data.day%></span></p>
+					</li>
+					<li>
+						<p>New user in week: <span class="text-primary font-weight-bold"><%=data.week%></span></p>
+					</li>
+					<li>
+						<p>New user in month: <span class="text-success font-weight-bold"><%=data.month%></span></p>
+					</li>
+				</ul>
+			</div>
+		</main>
+
+		<!-- footer -->
+		<%- include('../partials/footer'); %>
+	</body>
+
+</html>
