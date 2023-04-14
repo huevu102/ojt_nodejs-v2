@@ -4,25 +4,26 @@ const moment = require('moment');
 // bluebird promise xử lý các hàm asynchronous
 const Promise = require('bluebird');
 const reportLog = require('../config/log4js');
+const bot = require('../utils/telegram-bot');
 
 
 module.exports = function (agenda) {
 	agenda.define('user-count', { concurrency: 1 }, async (job, done) => {
-    reportLog.log(job);
+    reportLog.trace(job);
 
     // const { user } = job.attrs.data; ???? lam gi
 
-    const startDayUnixTime = moment().startOf('day');
-    const endDayUnixTime = moment().endOf('day');
+    const startDay = moment().startOf('day');
+    const endDay = moment().endOf('day');
 
-    const startWeekUnixTime = moment().startOf('week');
-    const endWeekUnixTime = moment().endOf('week');
+    const startWeek = moment().startOf('week');
+    const endWeek = moment().endOf('week');
 
-    const startMonthUnixTime = moment().startOf('month');
-    const endMonthUnixTime = moment().endOf('month');
+    const startMonth = moment().startOf('month');
+    const endMonth = moment().endOf('month');
 
 
-    reportLog.log("Job user-count start.")
+    reportLog.trace("Job user-count start.")
 
 
     const [ totalUser, newUserInDay, newUserInWeek, newUserInMonth ] = await Promise.all([
@@ -33,24 +34,24 @@ module.exports = function (agenda) {
       User.count({
         type: 'user',
         createdAt: {
-          $gte: startDayUnixTime,
-          $lte: endDayUnixTime
+          $gte: startDay,
+          $lte: endDay
         }
       }),
 
       User.count({
         type: 'user',
         createdAt: {
-          $gte: startWeekUnixTime,
-          $lte: endWeekUnixTime
+          $gte: startWeek,
+          $lte: endWeek
         }
       }),
 
       User.count({
         type: 'user',
         createdAt: {
-          $gte: startMonthUnixTime,
-          $lte: endMonthUnixTime
+          $gte: startMonth,
+          $lte: endMonth
         }
       })
     ]);
@@ -64,25 +65,28 @@ module.exports = function (agenda) {
       ),
 
       Report.findOneAndUpdate(
-        { time: startDayUnixTime, type: 'DAY' },
-        { time: startDayUnixTime, type: 'DAY', totalUser: newUserInDay },
+        { time: startDay, type: 'DAY' },
+        { time: startDay, type: 'DAY', totalUser: newUserInDay },
         { upsert: true }
       ),
 
       Report.findOneAndUpdate(
-        { time: startWeekUnixTime, type: 'WEEK' },
-        { time: startWeekUnixTime, type: 'WEEK', totalUser: newUserInWeek },
+        { time: startWeek, type: 'WEEK' },
+        { time: startWeek, type: 'WEEK', totalUser: newUserInWeek },
         { upsert: true }
       ),
 
       Report.findOneAndUpdate(
-        { time: startMonthUnixTime, type: 'MONTH' },
-        { time: startMonthUnixTime, type: 'MONTH', totalUser: newUserInMonth },
+        { time: startMonth, type: 'MONTH' },
+        { time: startMonth, type: 'MONTH', totalUser: newUserInMonth },
         { upsert: true }
       )
     ])
 
-    reportLog.log("Successfully created report.");
+    reportLog.trace("Successfully created user-count report.");
+
+    bot.sendMessage("User-count job done!\n" + 
+      `[Total user]: ${totalUser}\n[New in day]: ${newUserInDay}\n[New in week]: ${newUserInWeek}\n[New in month]: ${newUserInMonth}`);
 
     done();
 	});

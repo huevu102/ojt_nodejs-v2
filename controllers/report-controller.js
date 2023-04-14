@@ -5,16 +5,16 @@ const User = require('../models/user-model');
 
 module.exports = {
   statsUser: async () => {
-    const startDayUnixTime = moment().startOf('day');
-    const startWeekUnixTime = moment().startOf('week');
-    const startMonthUnixTime = moment().startOf('month');
+    const startDay = moment().startOf('day');
+    const startWeek = moment().startOf('week');
+    const startMonth = moment().startOf('month');
         
     const data = await Report.find({
       $or: [
         { type: 'ALL' },
-        { type: 'DAY', time: startDayUnixTime },
-        { type: 'WEEK', time: startWeekUnixTime },
-        { type: 'MONTH', time: startMonthUnixTime }
+        { type: 'DAY', time: startDay },
+        { type: 'WEEK', time: startWeek },
+        { type: 'MONTH', time: startMonth }
       ]
     });
 
