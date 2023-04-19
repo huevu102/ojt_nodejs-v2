@@ -1,6 +1,7 @@
 const User = require('../models/user-model');
 const Authentication = require('../utils/authentication');
-const moment = require('moment')
+const { publish } = require('../utils/pubsub-redis');
+
 
 module.exports = {
 	renderSignUpPage: (req, res) => {
@@ -30,7 +31,7 @@ module.exports = {
 		}
 
 		// Create new user
-		let userNum = await User.countDocuments({}); //????
+		let userNum = await User.countDocuments({});
 		let salt = Authentication.makeSalt();
 		user = new User({
 			type: (userNum>0?"user":"admin"),
@@ -43,10 +44,13 @@ module.exports = {
 		});
 
 		// Save user to database
-		if (await user.save()) {
-			// Auto redirect
-			res.redirect('/sign-in');
-		} else {
+		try {
+			user.save()
+				.then((newUser) => {
+					publish('create-new-user', { user: newUser });
+					// Auto redirect
+					res.redirect('/sign-in')});
+		} catch {
 			res.render('pages/sign-up', {
 				user: userData,
 				message: "Error to create user. Please contact the admin!!!"
@@ -74,7 +78,7 @@ module.exports = {
 		});
 	},
 
-	updateUser: async (req, res) => {
+	handleUpdateUser: async (req, res) => {
 		await User.updateOne(
 			{_id: req.params.id},
 			{$set: req.body}

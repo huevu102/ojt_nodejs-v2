@@ -1,5 +1,6 @@
 const { statsUser } = require('../controllers/report-controller.js');
 
+
 module.exports = {
 	renderHomePage: async (req, res) => {
 		try {

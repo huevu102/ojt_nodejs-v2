@@ -3,7 +3,7 @@ const GoogleAuthenticator = require('passport-2fa-totp').GoogeAuthenticator;
 const totp = require("totp-generator");
 const qr = require('qr-image');
 
-function makeSalt() {          //????
+function makeSalt() {
     return Math.round((new Date().valueOf() * Math.random())) + '';
 }
 exports.makeSalt = makeSalt;

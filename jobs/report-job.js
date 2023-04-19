@@ -4,14 +4,14 @@ const moment = require('moment');
 // bluebird promise xử lý các hàm asynchronous
 const Promise = require('bluebird');
 const reportLog = require('../config/log4js');
+const { makeRedisKey, setRedisCache } = require('../config/redis');
 const bot = require('../utils/telegram-bot');
+const subscriber = require('../utils/pubsub-redis');
 
 
 module.exports = function (agenda) {
-	agenda.define('user-count', { concurrency: 1 }, async (job, done) => {
+	agenda.define('user-count', { priority: "high", concurrency: 1 }, async (job, done) => {
     reportLog.trace(job);
-
-    // const { user } = job.attrs.data; ???? lam gi
 
     const startDay = moment().startOf('day');
     const endDay = moment().endOf('day');
@@ -83,10 +83,22 @@ module.exports = function (agenda) {
       )
     ])
 
+
+    //Redis cache
+    const key = makeRedisKey(['report-job', startDay]);
+    setRedisCache({
+      key, 
+      value: { all: totalUser, day: newUserInDay, week: newUserInWeek, month: newUserInMonth }
+    }).then(() => console.log(`Successfully cached data to ${key}`)).catch(e => console.log(e));
+
+
     reportLog.trace("Successfully created user-count report.");
 
-    bot.sendMessage("User-count job done!\n" + 
-      `[Total user]: ${totalUser}\n[New in day]: ${newUserInDay}\n[New in week]: ${newUserInWeek}\n[New in month]: ${newUserInMonth}`);
+
+    // telegram-bot
+    bot.sendMessage(`User-count job done!\n[Total user]: ${totalUser}\n`+
+    `[New in day]: ${newUserInDay}\n[New in week]: ${newUserInWeek}\n[New in month]: ${newUserInMonth}`);
+
 
     done();
 	});

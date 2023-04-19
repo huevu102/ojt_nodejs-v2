@@ -22,7 +22,7 @@ module.exports = (app) => {
 	router.post('/sign-up', UserController.handleSignup);
 	router.get('/users-mgmt', mid.isAdmin, UserController.renderUserMgmt);
 	router.get('/users-mgmt/qrcode/:id', mid.isAdmin, UserController.renderUserQrCode);
-	router.post('/users-mgmt/update/:id', mid.isAdmin, UserController.updateUser);
+	// router.post('/users-mgmt/update/:id', mid.isAdmin, UserController.handleUpdateUser);
 	router.post('/users-mgmt/delete/:id', mid.isAdmin, UserController.deleteUser);
 
 	// Agendash

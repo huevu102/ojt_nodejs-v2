@@ -1,14 +1,14 @@
 const moment = require('moment');
 const Report = require('../models/report-model');
-const User = require('../models/user-model');
+const { makeRedisKey, redisCacheExecute } = require('../config/redis');
 
 
-module.exports = {
-  statsUser: async () => {
-    const startDay = moment().startOf('day');
-    const startWeek = moment().startOf('week');
-    const startMonth = moment().startOf('month');
-        
+async function statsUser() {
+  const startDay = moment().startOf('day');
+  const startWeek = moment().startOf('week');
+  const startMonth = moment().startOf('month');
+      
+  const callback = async () => {
     const data = await Report.find({
       $or: [
         { type: 'ALL' },
@@ -30,4 +30,16 @@ module.exports = {
       month: monthData ? monthData.totalUser : 0
     }
   }
+
+  try {
+    const key = makeRedisKey( [ 'report-job', startDay ] );
+    const data = await redisCacheExecute( { key }, callback );
+    return data;
+  } catch (e) {
+    console.log(e);
+    return {};
+  }
 }
+
+
+module.exports = { statsUser }
